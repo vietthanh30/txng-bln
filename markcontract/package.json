@@ -1,0 +1,31 @@
+{
+  "name": "markcontract",
+  "version": "1.0.0",
+  "description": " Student mark contract",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fabric-contract-api": "^2.2.2",
+    "fabric-shim": "^2.2.2"
+  },
+  "nyc": {
+    "exclude": [
+        "coverage/**",
+        "test/**"
+    ],
+    "reporter": [
+        "text-summary",
+        "html"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100
+}
+}
