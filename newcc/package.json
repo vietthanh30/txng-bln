@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fabric-contract-api": "^2.2.2",
-    "fabric-shim": "^2.2.2"
+    "fabric-shim": "~1.4.0"
   },
   "nyc": {
     "exclude": [

@@ -1,5 +1,77 @@
-"use strict";
+/*
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+*/
 
-const testContract = require("./logic");
+const shim = require("fabric-shim");
 
-module.exports.contracts = [testContract];
+var MarksChaincode = class {
+  /** query marks
+   * stub: fabric contract api
+   * studentId: id of student
+   */
+  async queryMarks(stub) {
+    console.log("Mark contract queryMarks...");
+
+    // args
+    let ret = stub.getFunctionAndParameters();
+    console.info(ret);
+    let args = ret.params;
+    let studentId = args[0];
+
+    // call fabric contract api get state
+    let marksAsBytes = await stub.getState(studentId);
+    if (!marksAsBytes || marksAsBytes.toString().length <= 0) {
+      throw new Error("Student with this  id does not exist");
+    }
+
+    let marks = JSON.parse(marksAsBytes.toString());
+    return JSON.toString(marks);
+  }
+
+  /** add marks
+   * ctx: fabric contract api
+   * studentId: id of stuent
+   * subject1: mark of subject1
+   * subject2: mark of subject2
+   * subject3: mark of subject3
+   */
+  async addMarks(stub) {
+    console.log("Mark contract addMarks...");
+
+    // args
+    let ret = stub.getFunctionAndParameters();
+    console.info(ret);
+    let args = ret.params;
+    let studentId = args[0];
+
+    let marks = {
+      subj1: asrs[1], // subject1
+      subj2: args[2], // subject2
+      subj3: args[3], // subject3
+    };
+
+    // call fabric contract api save data to ledger
+    // key: studentId, value: marks
+    await stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
+    console.log("Student marks added to the ledger succesfully...");
+  }
+
+  /** delete marks */
+  async deleteMarks(stub) {
+    console.log("Mark contract deleteMarks...");
+
+    // args
+    let ret = stub.getFunctionAndParameters();
+    console.info(ret);
+    let args = ret.params;
+    let studentId = args[0];
+
+    // call fabric contract delete block
+    await stub.deleteState(studentId);
+    console.log("Student marks deleted from ledger successfully...");
+  }
+};
+
+shim.start(new MarksChaincode());
