@@ -6,6 +6,27 @@ const { Contract } = require("fabric-contract-api");
  * MarkContract
  */
 class MarkContract extends Contract {
+  /** init marks
+   * ctx: fabric contract api
+   * studentId: id of student
+   * subject1: mark of subject1
+   * subject2: mark of subject2
+   * subject3: mark of subject3
+   */
+  async initMarks(ctx, studentId, subject1, subject2, subject3) {
+    console.log("Mark contract initMarks...");
+    let marks = {
+      subj1: subject1,
+      subj2: subject2,
+      subj3: subject3,
+    };
+
+    // call fabric contract api save data to ledger
+    // key: studentId, value: marks
+    await ctx.stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
+    console.log("Student marks added to the ledger succesfully...");
+  }
+
   /** query marks
    * ctx: fabric contract api
    * studentId: id of student
