@@ -57,6 +57,21 @@
 ```
 $ npm install fabric-contract-api fabric-shim --save
 ```
+* Deploy một smart contract
+```
+cp -a markcontract /root/blockchain/fabric-samples/chaincode
+```
+* Cài đặt chaincode
+```
+# peer chaincode install -n mychaincode99 -v 1.0 -p "/opt/gopath/src/github.com/chaincode/markcontract" -l "node"
+# peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mychaincode99 -l "node" -v 1.0 -c '{"Args":[]}'
+```
+
+
+peer chaincode query -o orderer.example.com:7050 -C mychannel -n mychaincode99 -c '{"function":"queryMarks","Args":["Alice"]}'
+
+
+export CHANNEL_NAME=mychannel101
 
 # Refs
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
