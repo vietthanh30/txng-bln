@@ -63,7 +63,7 @@ cp -a markcontract /root/blockchain/fabric-samples/chaincode
 ```
 * Cài đặt chaincode
 ```
-# peer chaincode install -n mychaincode101 -v 1.0 -p "/opt/gopath/src/github.com/chaincode/newcc" -l "node"
+# peer chaincode install -n mychaincode200 -v 1.0 -p "/opt/gopath/src/github.com/chaincode/newcc" -l "node"
 # peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mychaincode101 -l "node" -v 1.0 -c '{"Args":[]}'
 ```
 
@@ -75,7 +75,15 @@ peer chaincode query -o orderer.example.com:7050 -C mychannel -n mychaincode99 -
 
 export CHANNEL_NAME=mychannel101
 
-+ peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mychaincode101 -l node -v 1.0 -c '{"function":"initMarks","Args":["Alice","68","84","89"]}' -P 'AND ('\''Org1MSP.peer'\'')'
++ peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mychaincode200 -l node -v 1.0 -c '{"Args":[]}' -P 'AND ('\''Org1MSP.peer'\'')'
+
+
+
+
+peer chaincode install -n mychaincode201 -v 1.0 -p "/opt/gopath/src/github.com/chaincode/chaincode_example02" -l "node"
+
+peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mychaincode201 -l node -v 1.0 -c '{"Args":[]}' -P 'AND ('\''Org1MSP.peer'\'')'
+
 
 # Refs
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
