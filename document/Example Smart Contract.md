@@ -67,11 +67,11 @@ cp -a markcontract /root/blockchain/fabric-samples/chaincode
 ```
 
 
-peer chaincode install -n mychaincode700 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/example1/
+peer chaincode install -n mychaincode900 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/example1/
 
 
 CHANNEL_NAME=mychannel
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode600 -l node -v 1.0 -c '{"Args":["initLedger","Alice", "100"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode900 -l node -v 1.0 -c '{"Args":["init","Alice", "100"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
 
 
