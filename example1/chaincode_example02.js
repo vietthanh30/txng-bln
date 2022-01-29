@@ -9,7 +9,7 @@ const util = require("util");
 
 var Chaincode = class {
   // Initialize the chaincode
-  async addMarks(stub) {
+  async initLedger(stub) {
     let ret = stub.getFunctionAndParameters();
     console.info(ret);
     let args = ret.params;
