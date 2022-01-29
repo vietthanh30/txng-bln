@@ -5,7 +5,6 @@
 */
 
 const shim = require("fabric-shim");
-const util = require("util");
 
 var Chaincode = class {
   // Initialize the chaincode
@@ -25,12 +24,13 @@ var Chaincode = class {
     }
   }
 
+  // help
   async Invoke(stub) {
     let ret = stub.getFunctionAndParameters();
     console.info(ret);
     let method = this[ret.fcn];
     if (!method) {
-      console.log("no method of name:" + ret.fcn + " found");
+      console.log('no method of name:' + ret.fcn + ' found');
       return shim.success();
     }
     try {
@@ -42,46 +42,17 @@ var Chaincode = class {
     }
   }
 
+
+  // put data to ledger
   async invoke(stub, args) {
-    if (args.length != 3) {
-      throw new Error("Incorrect number of arguments. Expecting 3");
-    }
-
-    let A = args[0];
-    let B = args[1];
-    if (!A || !B) {
-      throw new Error("asset holding must not be empty");
-    }
-
-    // Get the state from the ledger
-    let Avalbytes = await stub.getState(A);
-    if (!Avalbytes) {
-      throw new Error("Failed to get state of asset holder A");
-    }
-    let Aval = parseInt(Avalbytes.toString());
-
-    let Bvalbytes = await stub.getState(B);
-    if (!Bvalbytes) {
-      throw new Error("Failed to get state of asset holder B");
-    }
-
-    let Bval = parseInt(Bvalbytes.toString());
-    // Perform the execution
-    let amount = parseInt(args[2]);
-    if (typeof amount !== "number") {
-      throw new Error("Expecting integer value for amount to be transaferred");
-    }
-
-    Aval = Aval - amount;
-    Bval = Bval + amount;
-    console.info(util.format("Aval = %d, Bval = %d\n", Aval, Bval));
+    let stduentId = args[0];
+    let mark = args[1];
 
     // Write the states back to the ledger
-    await stub.putState(A, Buffer.from(Aval.toString()));
-    await stub.putState(B, Buffer.from(Bval.toString()));
+    await stub.putState(stduentId, Buffer.from(mark.toString()));
   }
 
-  // Deletes an entity from state
+  // deletes an entity from state
   async delete(stub, args) {
     if (args.length != 1) {
       throw new Error("Incorrect number of arguments. Expecting 1");
@@ -93,6 +64,7 @@ var Chaincode = class {
     await stub.deleteState(A);
   }
 
+  
   // query callback representing the query of a chaincode
   async query(stub, args) {
     if (args.length != 1) {
