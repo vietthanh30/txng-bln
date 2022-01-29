@@ -33,6 +33,7 @@ var Chaincode = class {
       console.log("Student marks added to the ledger succesfully...");
       return shim.success();
     } catch (err) {
+      console.log("Init chaincode error ", err);
       return shim.error(err);
     }
   }
