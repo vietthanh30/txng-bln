@@ -90,15 +90,20 @@ peer chaincode install -n mycc -v 1.0 -l node -p /opt/gopath/src/github.com/chai
 
 
 
-peer chaincode install -n mychaincode201 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/newcc/
+peer chaincode install -n mychaincode201 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/helloword/
 
 
 peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode201 -l node -v 1.0 -c '{"Args":[]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
 
+CHANNEL_NAME=mychannel
 peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode201 -l node -v 1.0 -c '{"function":"addMarks","Args":["Alice","68","84","89"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode201 -l node -v 1.0 -c '{"Args":["init","a", "100", "b","200"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
+
+
+mychannel
 
 # Refs
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
