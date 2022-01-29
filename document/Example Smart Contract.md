@@ -66,40 +66,13 @@ cp -a markcontract /root/blockchain/fabric-samples/chaincode
 # peer chaincode install -n mymark -v 1.0 -p "/opt/gopath/src/github.com/chaincode/newcc" -l "node"
 ```
 
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mymark -l node -v 1.0 -c '{"Args":[]}' -P "AND ('Org1MSP.peer')"
 
-
-peer chaincode query -o orderer.example.com:7050 -C mychannel -n mychaincode99 -c '{"function":"queryMarks","Args":["Alice"]}'
-
-
-export CHANNEL_NAME=mychannel101
-
-+ peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mymark -l node -v 1.0 -c '{"Args":[]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
-
-
-
-mychaincode201
-
-
-peer chaincode install -n mychaincode201 -v 1.0 -p "/opt/gopath/src/github.com/chaincode/newcc" -l "node"
-
-peer chaincode install -n mycc -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/chaincode_example02/node/
-
-
-
-
-
-
-peer chaincode install -n mychaincode201 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/helloword/
-
-
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode202 -l node -v 1.0 -c '{"Args":[]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
+peer chaincode install -n mychaincode700 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/example1/
 
 
 CHANNEL_NAME=mychannel
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode400 -l node -v 1.0 -c '{"function":"initLedger","Args":["Alice","68"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode600 -l node -v 1.0 -c '{"Args":["initLedger","Alice", "100"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode201 -l node -v 1.0 -c '{"Args":["init","a", "100", "b","200"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
 
 
 
