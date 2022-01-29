@@ -20,16 +20,12 @@ var Chaincode = class {
     let args = ret.params;
     let studentId = args[0];
 
-    let marks = {
-      subj1: asrs[1], // subject1
-      subj2: args[2], // subject2
-      subj3: args[3], // subject3
-    };
+    let mark = asrs[1];
 
     try {
       // call fabric contract api save data to ledger
       // key: studentId, value: marks
-      await stub.putState(studentId, Buffer.from("1000"));
+      await stub.putState(studentId, Buffer.from(mark));
       console.log("Student marks added to the ledger succesfully...");
       return shim.success();
     } catch (err) {
