@@ -1,82 +1,39 @@
 # Xây dựng một smart contract với hyperledger
 
-## Mark Contract
-* Tạo một thư mục với tên *markcontract*
-* Khởi tạo project nodejs
-* File package.json
+## Prerequisites
+* Install by link: https://github.com/vietthanh30/txng-bln
+
+## Install chaincode
+* Copy chaincode
 ```
-{
-    "name": "test-chaincode",
-    "version": "1.0.0",
-    "description": "My first Exciting Node.js Chaincode on Hyperledger Fabric",
-    "main": "index.js",
-    "engines": {
-        "node": ">=8",
-        "npm": ">=5"
-    },
-    "scripts": {
-        "lint": "eslint .",
-        "pretest": "npm run lint",
-        "test": "nyc mocha --recursive",
-        "start": "fabric-chaincode-node start"
-    },
-    "engineStrict": true,
-    "author": "Hyperledger",
-    "license": "Apache-2.0",
-    "dependencies": {
-        "fabric-contract-api": "~1.4.0",
-        "fabric-shim": "~1.4.0"
-    },
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "eslint": "^4.19.1",
-        "mocha": "^5.2.0",
-        "nyc": "^12.0.2",
-        "sinon": "^6.0.0",
-        "sinon-chai": "^3.2.0"
-    },
-    "nyc": {
-        "exclude": [
-            "coverage/**",
-            "test/**"
-        ],
-        "reporter": [
-            "text-summary",
-            "html"
-        ],
-        "all": true,
-        "check-coverage": true,
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-    }
-}
+# git pull origin master
+# cp -a example1 /root/blockchain/fabric-samples/chaincode
 ```
-* Cài đặt thư viện
+* SSH docker
 ```
-$ npm install fabric-contract-api fabric-shim --save
+# docker exec -it cli bash
 ```
-* Deploy một smart contract
+* Set ENV
 ```
-cp -a markcontract /root/blockchain/fabric-samples/chaincode
+# CHANNEL_NAME=mychannel
 ```
-* Cài đặt chaincode
+* Install chaincode
 ```
-# peer chaincode install -n mymark -v 1.0 -p "/opt/gopath/src/github.com/chaincode/newcc" -l "node"
+# peer chaincode install -n mychaincode1 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/example1/
+```
+* Instantiate chaincode
+```
+# peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode1 -l node -v 1.0 -c '{"Args":["init","Alice", "100"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
+```
+* Query data
+```
+# peer chaincode query -C $CHANNEL_NAME -n mychaincode1 -c '{"Args":["query","Alice"]}'
+```
+* Insert data
+```
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode1 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["invoke","hainv","10"]}'
 ```
 
-
-peer chaincode install -n mychaincode900 -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/example1/
-
-
-CHANNEL_NAME=mychannel
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mychaincode900 -l node -v 1.0 -c '{"Args":["init","Alice", "100"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
-
-
-
-
-mychannel
 
 # Refs
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
@@ -85,7 +42,3 @@ mychannel
 
 
 
-
-
-git pull origin master
-cp -a example1 /root/blockchain/fabric-samples/chaincode
