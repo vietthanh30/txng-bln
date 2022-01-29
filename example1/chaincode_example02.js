@@ -15,13 +15,10 @@ var Chaincode = class {
     let args = ret.params;
 
     let studentId = args[0];
-    let subjectMarks = args[1];
-    let marks = {
-      subject1: subjectMarks,
-    };
+    let mark = args[1];
 
     try {
-      await stub.putState(studentId, Buffer.from("1000"));
+      await stub.putState(studentId, Buffer.from(`${mask}`));
       return shim.success();
     } catch (err) {
       return shim.error(err);
