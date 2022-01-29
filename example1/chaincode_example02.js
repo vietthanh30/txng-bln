@@ -21,7 +21,8 @@ var Chaincode = class {
     };
 
     try {
-      await stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
+      await stub.putState(studentId, Buffer.from("1000"));
+      return shim.success();
     } catch (err) {
       return shim.error(err);
     }
