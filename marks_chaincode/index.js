@@ -10,7 +10,7 @@ var MarksChaincode = class {
   /** Init chaincode
    * stub: fabric contract api
    */
-  async init(stub) {
+  async Init(stub) {
     console.log("Mark contract init...");
 
     // args
