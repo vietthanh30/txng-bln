@@ -29,7 +29,7 @@ var Chaincode = class {
     try {
       // call fabric contract api save data to ledger
       // key: studentId, value: marks
-      await stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
+      await stub.putState(studentId, Buffer.from("1000"));
       console.log("Student marks added to the ledger succesfully...");
       return shim.success();
     } catch (err) {
