@@ -40,5 +40,3 @@ peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopat
 * https://github.com/Salmandabbakuti/chaincode-essentials
 * https://nabeelvalley.co.za/docs/blockchain/fabric-via-docs-1/#query
 
-
-
