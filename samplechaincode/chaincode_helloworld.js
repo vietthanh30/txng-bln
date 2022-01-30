@@ -17,7 +17,7 @@ var Chaincode = class {
     let mark = args[1];
 
     try {
-      await stub.putState(studentId, Buffer.from(mark));
+      await stub.putState(studentId, Buffer.from("100"));
       return shim.success();
     } catch (err) {
       return shim.error(err);
