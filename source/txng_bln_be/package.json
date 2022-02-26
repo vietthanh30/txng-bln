@@ -1,0 +1,19 @@
+{
+  "name": "txng_bln_be",
+  "version": "1.0.0",
+  "description": "## API design * We are going to define four APIs. They are  * *GET /api/queryallblock* return all cars  * *GET /api/query/blockId* return the car record of blockId specified * *POST /api/addblock/* add a new car record with detail specified in body",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "author": "hainv",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "fabric-ca-client": "^2.2.11",
+    "fabric-client": "^1.4.19",
+    "fabric-network": "^2.2.11"
+  }
+}
