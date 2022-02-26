@@ -8,7 +8,7 @@ class TxngBlnContract extends Contract {
   // query block data by id
   async queryBlockById(ctx, blockId) {
     let blockAsBytes = await ctx.stub.getState(blockId);
-    if (!blockAsBytes || blockAsBytes.toString().length <= 0) {
+    if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
     let block = JSON.parse(blockAsBytes.toString());
