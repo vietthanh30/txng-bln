@@ -21,7 +21,7 @@ class TxngBlnContract extends Contract {
   async addBlock(ctx, blockId, blockData) {
     // await ctx.stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
     try {
-      await ctx.stub.putState(blockId, Buffer.from(blockData));
+      await ctx.stub.putState(blockId, Buffer.from(blockData.toString()));
       console.log("Block data added to the ledger succesfully");
     } catch (err) {
       console.log("Add block error: ", err);
