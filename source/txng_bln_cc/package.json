@@ -1,5 +1,5 @@
 {
-    "name": "txng-bln chaincode",
+    "name": "txng_bln_chaincode",
     "version": "1.0.0",
     "description": "My first Exciting Node.js Chaincode on Hyperledger Fabric",
     "main": "index.js",
