@@ -9,15 +9,27 @@ const { FileSystemWallet, X509WalletMixin } = require("fabric-network");
 const fs = require("fs");
 const path = require("path");
 
-const ccpPath = path.resolve(
-  __dirname,
-  "..",
-  "..",
-  "first-network",
-  "connection-org1.json"
-);
+// const ccpPath = path.resolve(
+//   __dirname,
+//   "..",
+//   "..",
+//   "first-network",
+//   "connection-org1.json"
+// );
+// const ccpJSON = fs.readFileSync(ccpPath, "utf8");
+// const ccp = JSON.parse(ccpJSON);
+
+const ccpPath =
+  "/root/blockchain/fabric-samples/first-network/connection-org1.json";
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 const ccp = JSON.parse(ccpJSON);
+
+console.log("=== ccp ===");
+console.log(ccp);
+console.log("=== ccp end ===");
+console.log("=== wallet ===");
+console.log(process.cwd());
+console.log("=== wallet end ===");
 
 async function main() {
   try {
