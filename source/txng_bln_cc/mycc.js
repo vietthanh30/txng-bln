@@ -16,6 +16,7 @@ class TxngBlnContract extends Contract {
     let block = blockAsBytes.toString();
     console.info("queryBlockById blockAsBytes: ", blockAsBytes);
     console.info("queryBlockById response: ", block);
+    
     return block;
   }
 
