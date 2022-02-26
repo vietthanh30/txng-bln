@@ -6,25 +6,22 @@ const { Contract } = require("fabric-contract-api");
  */
 class TxngBlnContract extends Contract {
   // query block data by id
-  async queryBlockById(stub, args) {
-    let blockId = args[0];
-    let blockAsBytes = await stub.getState(blockId);
+  async queryBlockById(ctx, blockId) {
+    let blockAsBytes = await ctx.stub.getState(blockId);
     if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
     // let block = JSON.parse(blockAsBytes.toString());
-    return blockAsBytes;
+    return blockAsBytes.toString();
   }
 
   // add block data
   // blockId: String
   // blockData: String
-  async addBlock(stub, args) {
-    let blockId = args[0];
-    let blockData = args[1];
+  async addBlock(ctx, blockId, blockData) {
     // await ctx.stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
     try {
-      await stub.putState(blockId, Buffer.from(blockData));
+      await ctx.stub.putState(blockId, Buffer.from(blockData.toString()));
       console.log("Block data added to the ledger succesfully");
     } catch (err) {
       console.log("Add block error: ", err);
@@ -34,10 +31,9 @@ class TxngBlnContract extends Contract {
   }
 
   // delete block data by id
-  async deleteBlockById(stub, args) {
-    let blockId = args[0];
+  async deleteBlockById(ctx, blockId) {
     try {
-      await stub.deleteState(blockId);
+      await ctx.stub.deleteState(blockId);
       console.log("Block data deleted from the ledger succesfully");
     } catch (err) {
       console.log("Delete block error: ", err);
