@@ -7,6 +7,8 @@ const { Contract } = require("fabric-contract-api");
 class TxngBlnContract extends Contract {
   // query block data by id
   async queryBlockById(ctx, blockId) {
+    console.info('ctx: ', ctx);
+    console.info('blockId: ', blockId);
     let blockAsBytes = await ctx.stub.getState(blockId);
     if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
