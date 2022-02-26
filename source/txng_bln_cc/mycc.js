@@ -6,8 +6,9 @@ const { Contract } = require("fabric-contract-api");
  */
 class TxngBlnContract extends Contract {
   // query block data by id
-  async queryBlockById(ctx, blockId) {
-    let blockAsBytes = await ctx.stub.getState(blockId);
+  async queryBlockById(stub, args) {
+    let blockId = args[0];
+    let blockAsBytes = await stub.getState(blockId);
     if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
@@ -18,10 +19,12 @@ class TxngBlnContract extends Contract {
   // add block data
   // blockId: String
   // blockData: String
-  async addBlock(ctx, blockId, blockData) {
+  async addBlock(stub, args) {
+    let blockId = args[0];
+    let blockData = args[1];
     // await ctx.stub.putState(studentId, Buffer.from(JSON.stringify(marks)));
     try {
-      await ctx.stub.putState(blockId, Buffer.from(blockData.toString()));
+      await stub.putState(blockId, Buffer.from(blockData));
       console.log("Block data added to the ledger succesfully");
     } catch (err) {
       console.log("Add block error: ", err);
@@ -31,9 +34,10 @@ class TxngBlnContract extends Contract {
   }
 
   // delete block data by id
-  async deleteBlockById(ctx, blockId) {
+  async deleteBlockById(stub, args) {
+    let blockId = args[0];
     try {
-      await ctx.stub.deleteState(blockId);
+      await stub.deleteState(blockId);
       console.log("Block data deleted from the ledger succesfully");
     } catch (err) {
       console.log("Delete block error: ", err);
