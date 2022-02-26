@@ -11,8 +11,8 @@ class TxngBlnContract extends Contract {
     if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
-    let block = JSON.parse(blockAsBytes.toString());
-    return JSON.stringify(block);
+    // let block = JSON.parse(blockAsBytes.toString());
+    return blockAsBytes;
   }
 
   // add block data
