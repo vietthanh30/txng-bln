@@ -12,7 +12,7 @@ class TxngBlnContract extends Contract {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
     // let block = JSON.parse(blockAsBytes.toString());
-    return blockAsBytes.toString();
+    return blockAsBytes;
   }
 
   // add block data
