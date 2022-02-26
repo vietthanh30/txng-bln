@@ -7,14 +7,16 @@ const { Contract } = require("fabric-contract-api");
 class TxngBlnContract extends Contract {
   // query block data by id
   async queryBlockById(ctx, blockId) {
-    console.info('ctx: ', ctx);
-    console.info('blockId: ', blockId);
+    console.info("queryBlockById ctx: ", ctx);
+    console.info("queryBlockById blockId: ", blockId);
     let blockAsBytes = await ctx.stub.getState(blockId);
     if (!blockAsBytes) {
       throw new Error(`Get block data with this id ${blockId} does not exist`);
     }
-    // let block = JSON.parse(blockAsBytes.toString());
-    return blockAsBytes;
+    let block = blockAsBytes.toString();
+    console.info("queryBlockById blockAsBytes: ", blockAsBytes);
+    console.info("queryBlockById response: ", block);
+    return block;
   }
 
   // add block data
