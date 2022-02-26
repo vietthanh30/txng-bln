@@ -46,6 +46,12 @@
 # peer chaincode query -C $CHANNEL_NAME -n txngbln_chaincode -c '{"function":"queryBlockById","Args":["Alice"]}'
 ```
 
+## Logs of chaincode
+* Run command check logs chaincode
+```
+# docker logs -f <CONTAINER_ID>
+```
+
 
 # Refs
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
