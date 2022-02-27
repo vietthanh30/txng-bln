@@ -37,7 +37,8 @@ async function main() {
     const caInfo = ccp.certificateAuthorities["ca.org1.example.com"];
     const caTLSCACerts = caInfo.tlsCACerts.pem;
     const ca = new FabricCAServices(
-      caInfo.url,
+      // caInfo.url,
+      'https://172.23.0.7:7054',
       { trustedRoots: caTLSCACerts, verify: false },
       caInfo.caName
     );
