@@ -38,7 +38,7 @@ async function main() {
     const caTLSCACerts = caInfo.tlsCACerts.pem;
     const ca = new FabricCAServices(
       // caInfo.url,
-      'https://ca.org1.example.com:7054',
+      'http://ca.org1.example.com:7054',
       { trustedRoots: caTLSCACerts, verify: false },
       caInfo.caName
     );
