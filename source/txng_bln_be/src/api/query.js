@@ -54,13 +54,13 @@ const getBlockById = async (req, res) => {
 
     let resData = {
       status: Constant.HTTP_CODE.SUCCESSFULLY,
-      data: result,
+      data: result.toString(),
       msg: "successfully",
     };
     res.send(resData);
   } catch (error) {
     console.error(`Failed to evaluate transaction: ${error}`);
-    console.error("getBlockId error: ", err);
+    console.error("getBlockId error: ", error);
     let resData = {
       status: Constant.HTTP_CODE.INTERNAL_SERVER,
       msg: error,
