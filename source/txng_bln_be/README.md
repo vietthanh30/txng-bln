@@ -3,8 +3,8 @@
 ## API design
 * We are going to define four APIs. They are
  * *GET /api/queryallblock* return all cars
- * *GET /api/query/blockId* return the car record of blockId specified
-* *POST /api/addblock/* add a new car record with detail specified in body
+ * *GET /query/blockId/:id* return the car record of blockId specified
+ * *POST /api/addblock/* add a new car record with detail specified in body
 
 ## Enroll admin
 * Run command
