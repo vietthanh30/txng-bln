@@ -13,7 +13,7 @@
 ```
 # cd ROOT/fabric-samples/first-network
 # ./byfn.sh generate
-# ./byfn.sh up
+# ./byfn.sh up -a true
 ```
 * Install chaincode
 ```
