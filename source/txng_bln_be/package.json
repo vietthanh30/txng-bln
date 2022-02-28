@@ -14,6 +14,9 @@
     "express": "^4.17.3",
     "fabric-client": "^1.4.19",
     "fabric-ca-client": "~1.4.0",
-    "fabric-network": "~1.4.0"
+    "fabric-network": "~1.4.0",
+    "express-validation": "^1.0.3",
+    "joi": "^14.3.1",
+    "cors": "^2.8.5"
   }
 }
