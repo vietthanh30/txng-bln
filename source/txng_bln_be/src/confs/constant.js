@@ -1,6 +1,10 @@
 const Constant = {
   SERVER_PORT: 8080,
 
+  WALLET_PATH:"/root/blockchain/txng-bln/source/txng_bln_be/src/wallet",
+  CONNECTION_ORG1_PATH: "/root/blockchain/fabric-samples/first-network/connection-org1.json",
+
+
   HTTP_CODE: {
     SUCCESSFULLY: 200,
     INTERNAL_SERVER: 5000,
