@@ -8,7 +8,7 @@ const { addBlock } = require("./invoke");
 module.exports = function (router) {
   router.route("/").get(getHelloWorld);
   router.route("/query/blockId/:id").get(getBlockById);
-  router.route("/query/allblock").get(getAllBlock);
+  router.route("/query/allblock/:startKey/:endKey").get(getAllBlock);
 
   router.route("/addblock").post(
     validate({

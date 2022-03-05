@@ -36,10 +36,7 @@ class TxngBlnContract extends Contract {
   }
 
   // query all block
-  async queryAllBlock(ctx) {
-    const startKey = "CAR0";
-    const endKey = "CAR999";
-
+  async queryAllBlock(ctx, startKey, endKey) {
     const iterator = await ctx.stub.getStateByRange(startKey, endKey);
 
     const allResults = [];

@@ -56,7 +56,7 @@ const getBlockById = async (req, res) => {
       status: Constant.HTTP_CODE.SUCCESSFULLY,
       data: {
         key: blockId,
-        blockData: result.toString(),
+        blockData: result,
       },
       msg: "successfully",
     };
@@ -109,12 +109,17 @@ const getAllBlock = async (req, res) => {
     // Get the contract from the network.
     const contract = network.getContract(Constant.CHAINCODE_NAME);
 
-    let blockId = req.params.id;
+    let startKey = req.params.startKey;
+    let endKey = req.params.endKey;
 
     // Evaluate the specified transaction.
     // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
     // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
-    const result = await contract.evaluateTransaction("queryAllBlock");
+    const result = await contract.evaluateTransaction(
+      "queryAllBlock",
+      startKey,
+      endKey
+    );
     console.log(
       `Transaction has been evaluated, result is: ${result.toString()}`
     );
@@ -122,8 +127,9 @@ const getAllBlock = async (req, res) => {
     let resData = {
       status: Constant.HTTP_CODE.SUCCESSFULLY,
       data: {
-        key: blockId,
-        blockData: result.toString(),
+        startKey: startKey,
+        endKey: endKey,
+        blockData: result,
       },
       msg: "successfully",
     };
