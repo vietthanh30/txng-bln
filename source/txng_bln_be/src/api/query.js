@@ -37,6 +37,7 @@ const getBlockById = async (req, res) => {
     const contract1 = network1.getContract("qscc");
     let result1 = await contract1.evaluateTransaction(
       "GetChainInfo",
+      Constant.CHANNEL_NAME,
       Constant.CHAINCODE_NAME
     );
     console.log('--------------------', result1);
