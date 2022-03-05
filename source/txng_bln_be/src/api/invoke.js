@@ -2,7 +2,7 @@ const { FileSystemWallet, Gateway } = require("fabric-network");
 
 const Constant = require("../confs/constant");
 
-const getBlockById = async (req, res) => {
+const addBlock = async (req, res) => {
   try {
     // Create a new file system based wallet for managing identities.
     // const walletPath = path.join(process.cwd(), "wallet");
@@ -37,44 +37,54 @@ const getBlockById = async (req, res) => {
     const network = await gateway.getNetwork("mychannel");
 
     // Get the contract from the network.
-    const contract = network.getContract("txngbln_chaincode");
+    const contract = network.getContract("fabcar");
 
-    let blockId = req.params.id;
+    // Submit the specified transaction.
+    // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
+    // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
 
-    // Evaluate the specified transaction.
-    // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
-    // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
-    const result = await contract.evaluateTransaction(
-      "queryBlockById",
-      blockId
+    let reqBodyData = req.body;
+    let blockId = reqBodyData.id;
+    let blockData = {
+      id: blockId,
+      title: reqBodyData.title,
+      date: reqBodyData.date,
+      description: reqBodyData.description,
+      author: reqBodyData.author,
+    };
+
+    console.log("Block data: ", blockData);
+
+    await contract.submitTransaction(
+      "addBlock",
+      blockId,
+      JSON.stringify(blockData)
     );
-    console.log(
-      `Transaction has been evaluated, result is: ${result.toString()}`
-    );
+    console.log("Transaction has been submitted");
 
+    // Disconnect from the gateway.
+    await gateway.disconnect();
+
+    // response
     let resData = {
       status: Constant.HTTP_CODE.SUCCESSFULLY,
       data: {
         key: blockId,
-        blockData: result.toString(),
+        blockData: blockData,
       },
       msg: "successfully",
     };
     res.send(resData);
   } catch (error) {
-    console.error(`Failed to evaluate transaction: ${error}`);
-    console.error("getBlockId error: ", error);
+    console.error(`Failed to submit transaction: ${error}`);
     let resData = {
       status: Constant.HTTP_CODE.INTERNAL_SERVER,
       msg: error,
     };
     res.send(resData);
   }
-
-  try {
-  } catch (err) {}
 };
 
 module.exports = {
-  getBlockById,
+  addBlock,
 };

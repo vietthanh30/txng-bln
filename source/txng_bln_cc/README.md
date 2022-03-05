@@ -57,4 +57,4 @@
 * https://medium.com/coinmonks/start-developing-hyperledger-fabric-chaincode-in-node-js-e63b655d98db
 * https://github.com/Salmandabbakuti/chaincode-essentials/blob/master/client/start.sh
 * https://github.com/Salmandabbakuti/chaincode-essentials/blob/master/chaincode/newcc/logic.js
-
+* https://github.com/hyperledger-labs/keyhole-fabric-api-gateway

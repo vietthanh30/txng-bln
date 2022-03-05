@@ -3,8 +3,22 @@ const Joi = require("joi");
 
 const { getHelloWorld } = require("./helloworld");
 const { getBlockById } = require("./query");
+const { addBlock } = require("./invoke");
 
 module.exports = function (router) {
   router.route("/").get(getHelloWorld);
   router.route("/query/blockId/:id").get(getBlockById);
+
+  router.route("/addblock").post(
+    validate({
+      body: {
+        id: Joi.string().required(),
+        title: Joi.string().required(),
+        date: Joi.string().required(),
+        description: Joi.string().required(),
+        author: Joi.string().required(),
+      },
+    }),
+    addBlock
+  );
 };
