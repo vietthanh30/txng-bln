@@ -2,7 +2,21 @@
 
 ## API design
 * We are going to define four APIs. They are
- * *GET /api/queryallblock* return all cars
+ * *GET /api/query/allblock/startKey/endKey* return all cars
+```
+API: http://IP:8080/api/query/allblock/a/z
+Method: GET
+Response:
+{
+    "status": 200,
+    "data": {
+        "startKey": "a",
+        "endKey": "z",
+        "blockData": "[{\"Key\":\"a1\",\"Record\":{\"id\":\"a1\",\"title\":\"2\",\"date\":\"2022/03/05\",\"description\":\"2222\",\"author\":\"hainv\"}},{\"Key\":\"a2\",\"Record\":{\"id\":\"a2\",\"title\":\"2\",\"date\":\"2022/03/05\",\"description\":\"2222\",\"author\":\"hainv\"}},{\"Key\":\"a3\",\"Record\":{\"id\":\"a3\",\"title\":\"2\",\"date\":\"2022/03/05\",\"description\":\"2222\",\"author\":\"hainv\"}}]"
+    },
+    "msg": "successfully"
+}
+```
 
  * *GET /api/query/blockId/:id* return the car record of blockId specified
 ```
@@ -12,7 +26,7 @@ Response:
 {
     "status": 200,
     "data": {
-        "key": "1",
+        "key": "a1",
         "blockData": "{\"id\":\"1\",\"title\":\"1\",\"date\":\"2022/03/05\",\"description\":\"111111\",\"author\":\"hainv\"}"
     },
     "msg": "successfully"
@@ -24,7 +38,7 @@ API: http://IP:8080/api/addblock
 Method: POST
 Request body:
 {
-	"id":"1",
+	"id":"a1",
 	"title":"1",
 	"date":"2022/03/05",
 	"description":"111111",
@@ -34,9 +48,9 @@ Response:
  {
     "status": 200,
     "data": {
-        "key": "1",
+        "key": "a1",
         "blockData": {
-            "id": "1",
+            "id": "a1",
             "title": "1",
             "date": "2022/03/05",
             "description": "111111",
