@@ -33,6 +33,14 @@ const getBlockById = async (req, res) => {
       discovery: { enabled: true, asLocalhost: true },
     });
 
+    const network1 = await gateway.getNetwork("mychannel");
+    const contract1 = network1.getContract("qscc");
+    let result1 = await contract1.evaluateTransaction(
+      "GetChainInfo",
+      Constant.CHAINCODE_NAME
+    );
+    console.log('--------------------', result1);
+
     // Get the network (channel) our contract is deployed to.
     const network = await gateway.getNetwork(Constant.CHANNEL_NAME);
 
