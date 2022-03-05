@@ -34,10 +34,10 @@ const getBlockById = async (req, res) => {
     });
 
     // Get the network (channel) our contract is deployed to.
-    const network = await gateway.getNetwork("mychannel");
+    const network = await gateway.getNetwork(Constant.CHANNEL_NAME);
 
     // Get the contract from the network.
-    const contract = network.getContract("txngbln_chaincode");
+    const contract = network.getContract(Constant.CHAINCODE_NAME);
 
     let blockId = req.params.id;
 

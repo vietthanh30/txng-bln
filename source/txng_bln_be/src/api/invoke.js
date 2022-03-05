@@ -34,10 +34,10 @@ const addBlock = async (req, res) => {
     });
 
     // Get the network (channel) our contract is deployed to.
-    const network = await gateway.getNetwork("mychannel");
+    const network = await gateway.getNetwork(Constant.CHANNEL_NAME);
 
     // Get the contract from the network.
-    const contract = network.getContract("fabcar");
+    const contract = network.getContract(Constant.CHAINCODE_NAME);
 
     // Submit the specified transaction.
     // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
