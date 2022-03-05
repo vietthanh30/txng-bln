@@ -56,7 +56,7 @@ const getBlockById = async (req, res) => {
       status: Constant.HTTP_CODE.SUCCESSFULLY,
       data: {
         key: blockId,
-        blockData: result,
+        blockData: result.toString(),
       },
       msg: "successfully",
     };
@@ -129,7 +129,7 @@ const getAllBlock = async (req, res) => {
       data: {
         startKey: startKey,
         endKey: endKey,
-        blockData: result,
+        blockData: result.toString(),
       },
       msg: "successfully",
     };
