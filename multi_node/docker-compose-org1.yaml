@@ -19,17 +19,17 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca-org1
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/186631d75599071306483113771f4af4703909cad1bb37f53b93cdcec803d0d3_sk
     ports:
       - '7054:7054'
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/186631d75599071306483113771f4af4703909cad1bb37f53b93cdcec803d0d3_sk -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca0.example.com
     extra_hosts:
-      - 'peer0.org2.example.com:SECOND_MACHINE_IP'
-      - 'peer1.org2.example.com:SECOND_MACHINE_IP'
-      - 'ca1.example.com:SECOND_MACHINE_IP'
+      - 'peer0.org2.example.com:172.104.182.231'
+      - 'peer1.org2.example.com:172.104.182.231'
+      - 'ca1.example.com:172.104.182.231'
     networks:
       - byfn
 
@@ -55,9 +55,9 @@ services:
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
       - orderer.example.com:/var/hyperledger/production/orderer
     extra_hosts:
-      - 'peer0.org2.example.com:SECOND_MACHINE_IP'
-      - 'peer1.org2.example.com:SECOND_MACHINE_IP'
-      - 'ca1.example.com:SECOND_MACHINE_IP'
+      - 'peer0.org2.example.com:172.104.182.231'
+      - 'peer1.org2.example.com:172.104.182.231'
+      - 'ca1.example.com:172.104.182.231'
     ports:
       - 7050:7050
     networks:
@@ -93,9 +93,9 @@ services:
       - peer0.org1.example.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     extra_hosts:
-      - 'peer0.org2.example.com:SECOND_MACHINE_IP'
-      - 'peer1.org2.example.com:SECOND_MACHINE_IP'
-      - 'ca1.example.com:SECOND_MACHINE_IP'
+      - 'peer0.org2.example.com:172.104.182.231'
+      - 'peer1.org2.example.com:172.104.182.231'
+      - 'ca1.example.com:172.104.182.231'
     command: peer node start
     ports:
       - 7051:7051
@@ -146,9 +146,9 @@ services:
       - peer1.org1.example.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     extra_hosts:
-      - 'peer0.org2.example.com:SECOND_MACHINE_IP'
-      - 'peer1.org2.example.com:SECOND_MACHINE_IP'
-      - 'ca1.example.com:SECOND_MACHINE_IP'
+      - 'peer0.org2.example.com:172.104.182.231'
+      - 'peer1.org2.example.com:172.104.182.231'
+      - 'ca1.example.com:172.104.182.231'
     command: peer node start
     ports:
       - 8051:7051
@@ -189,9 +189,9 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
 
     extra_hosts:
-      - 'peer0.org2.example.com:SECOND_MACHINE_IP'
-      - 'peer1.org2.example.com:SECOND_MACHINE_IP'
-      - 'ca1.example.com:SECOND_MACHINE_IP'
+      - 'peer0.org2.example.com:172.104.182.231'
+      - 'peer1.org2.example.com:172.104.182.231'
+      - 'ca1.example.com:172.104.182.231'
 
     command: /bin/bash
     volumes:
