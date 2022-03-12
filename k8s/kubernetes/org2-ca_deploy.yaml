@@ -38,11 +38,11 @@ spec:
             - name: FABRIC_CA_SERVER_CA_CERTFILE
               value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem
             - name: FABRIC_CA_SERVER_CA_KEYFILE
-              value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/9160d30ace287fd0e5e33d8c1f915b3ddd0811897ea229f6a04872cd971b26d4_sk
+              value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/baf6c911f5c045f7e955cccf1639022cdc3490ea1861797427794a47e2176ff1_sk
             - name: FABRIC_CA_SERVER_TLS_CERTFILE
               value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem
             - name: FABRIC_CA_SERVER_TLS_KEYFILE
-              value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/9160d30ace287fd0e5e33d8c1f915b3ddd0811897ea229f6a04872cd971b26d4_sk
+              value: /fabric/crypto-config/peerOrganizations/org2.example.com/ca/baf6c911f5c045f7e955cccf1639022cdc3490ea1861797427794a47e2176ff1_sk
             - name: GODEBUG
               value: 'netdns=go'
           volumeMounts:
