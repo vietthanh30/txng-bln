@@ -17,7 +17,8 @@ services:
         container_name: zookeeper1
         environment:
             - ZOO_MY_ID=2
-            - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888 server.3=zookeeper2:2888:3888
+            #- ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888 server.3=zookeeper2:2888:3888
+            - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888
         extra_hosts:
             - "zookeeper0:${NODE1}"
             #- "zookeeper2:${NODE3}"
@@ -31,7 +32,8 @@ services:
         container_name: kafka1
         environment:
             - KAFKA_BROKER_ID=1
-            - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
+            #- KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
+            - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181
             - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092
             - KAFKA_MESSAGE_MAX_BYTES=1000012 B
             - KAFKA_REPLICA_FETCH_MAX_BYTES=1048576 B
@@ -57,7 +59,8 @@ services:
         environment:
             - ORDERER_HOST=orderer1.example.com
             - CONFIGTX_ORDERER_ORDERERTYPE=kafka
-            - CONFIGTX_ORDERER_KAFKA_BROKERS=[kafka0:9092,kafka1:9092,kafka2:9092,kafka3:9092]
+            #- CONFIGTX_ORDERER_KAFKA_BROKERS=[kafka0:9092,kafka1:9092,kafka2:9092,kafka3:9092]
+            - CONFIGTX_ORDERER_KAFKA_BROKERS=[kafka0:9092,kafka1:9092]
             - ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
             - ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
             - ORDERER_KAFKA_VERBOSE=true
