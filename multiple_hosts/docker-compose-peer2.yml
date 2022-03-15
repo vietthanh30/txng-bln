@@ -39,9 +39,9 @@ services:
         - ./crypto-config/peerOrganizations/org1.example.com/users:/etc/hyperledger/msp/users
         - ./config:/etc/hyperledger/configtx
     extra_hosts:
-    - "orderer.example.com:167.99.159.168"
-    - "peer0.org1.example.com:167.99.159.168"
-    - "ca.example.com:167.99.159.168"
+    - "orderer.example.com:192.53.117.21"
+    - "peer0.org1.example.com:192.53.117.21"
+    - "ca.example.com:192.53.117.21"
     depends_on:
       - couchdb1
     networks:
