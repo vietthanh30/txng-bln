@@ -15,14 +15,14 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.example.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c9046544c23fb7382a61100c8a9c44ac8ece53d057a1cfb8c697fd94e7f19e32_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8cc2ce74c13542d23e5bda44d63cf9c667c8380ac1a8a4107303af6c24f9c563_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     extra_hosts:
-    - "peer1.org1.example.com:209.97.128.176"
+    - "peer1.org1.example.com:172.104.182.231"
     container_name: ca.example.com
     networks:
       - basic
@@ -46,7 +46,7 @@ services:
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
         - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peerOrg1
     extra_hosts:
-    - "peer1.org1.example.com:209.97.128.176"
+    - "peer1.org1.example.com:172.104.182.231"
     networks:
       - basic
 
@@ -84,7 +84,7 @@ services:
         - ./crypto-config/peerOrganizations/org1.example.com/users:/etc/hyperledger/msp/users
         - ./config:/etc/hyperledger/configtx
     extra_hosts:
-    - "peer1.org1.example.com:209.97.128.176"
+    - "peer1.org1.example.com:172.104.182.231"
     depends_on:
       - orderer.example.com
       - couchdb
