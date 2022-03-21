@@ -6,7 +6,7 @@ const Constant = {
     "/root/blockchain/fabric-samples/first-network/connection-org1.json",
 
   CHANNEL_NAME: "mychannel",
-  CHAINCODE_NAME: "txngbln_chaincode",
+  CHAINCODE_NAME: "mycc1",
 
   HTTP_CODE: {
     SUCCESSFULLY: 200,
