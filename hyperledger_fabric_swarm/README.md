@@ -131,7 +131,7 @@ $ python --version
 ```
 # go get  gopkg.in/yaml.v2
 # cd ROOT/txng-bln/hyperledger_fabric_swarm
-# yarn genConfig -domain agiletech.vn -Kafka 3 -Orderer 2 -Zookeeper 3 -Orgs 2 -Peer 1 -Tag :x86_64-1.1.0-preview
+# yarn genConfig -domain example.com -Kafka 3 -Orderer 2 -Zookeeper 3 -Orgs 2 -Peer 1 -Tag :latest
 # yarn genConfig -domain example.com -Orderer 1 -Orgs 2 -Peer 2 -Tag :latest
 # yarn genArtifacts -c mychannel -d example.com -o 2
 ```
