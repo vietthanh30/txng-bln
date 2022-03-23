@@ -2,8 +2,7 @@ const Constant = {
   SERVER_PORT: 8080,
 
   WALLET_PATH: "/root/blockchain/txng-bln/source/txng_bln_be/src/wallet",
-  CONNECTION_ORG1_PATH:
-    "/root/blockchain/txng-bln/Build-Multi-Host-Network-Hyperledger/connection-org1.json",
+  CONNECTION_ORG1_PATH:"/root/blockchain/txng-bln/source/txng_bln_be/src/confs/connection-org1.json",
 
   CHANNEL_NAME: "mychannel",
   CHAINCODE_NAME: "txngbln_chaincode",
