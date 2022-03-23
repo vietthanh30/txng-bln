@@ -21,7 +21,7 @@ const Constant = require("./confs/constant");
 // const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 // const ccp = JSON.parse(ccpJSON);
 
-const ccpPath =Constant.CONNECTION_ORG1_PATH;
+const ccpPath = Constant.CONNECTION_ORG1_PATH;
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 const ccp = JSON.parse(ccpJSON);
 

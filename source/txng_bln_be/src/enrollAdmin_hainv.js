@@ -21,7 +21,7 @@ const Constant = require("./confs/constant");
 // const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 // const ccp = JSON.parse(ccpJSON);
 
-const ccpPath =Constant.CONNECTION_ORG1_PATH;
+const ccpPath = Constant.CONNECTION_ORG1_PATH;
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 const ccp = JSON.parse(ccpJSON);
 
@@ -35,6 +35,18 @@ console.log("=== wallet end ===");
 async function main() {
   try {
     // Create a new CA client for interacting with the CA.
+    const caInfo = ccp.certificateAuthorities["ca.org1.example.com"];
+    const caTLSCACerts = caInfo.tlsCACerts.pem;
+    const ca = new FabricCAServices(
+      "https://localhost:7054",
+      {
+        trustedRoots:
+          "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem",
+        verify: false,
+      },
+      "ca.example.com"
+    );
+
     const caInfo = ccp.certificateAuthorities["ca.org1.example.com"];
     const caTLSCACerts = caInfo.tlsCACerts.pem;
     const ca = new FabricCAServices(
