@@ -9,6 +9,8 @@ const { FileSystemWallet, X509WalletMixin } = require("fabric-network");
 const fs = require("fs");
 const path = require("path");
 
+const Constant = require("./confs/constant");
+
 // const ccpPath = path.resolve(
 //   __dirname,
 //   "..",
@@ -19,8 +21,7 @@ const path = require("path");
 // const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 // const ccp = JSON.parse(ccpJSON);
 
-const ccpPath =
-  "/root/blockchain/fabric-samples/first-network/connection-org1.json";
+const ccpPath =Constant.CONNECTION_ORG1_PATH;
 const ccpJSON = fs.readFileSync(ccpPath, "utf8");
 const ccp = JSON.parse(ccpJSON);
 
