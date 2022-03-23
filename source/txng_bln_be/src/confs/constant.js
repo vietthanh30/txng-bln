@@ -3,7 +3,7 @@ const Constant = {
 
   WALLET_PATH: "/root/blockchain/txng-bln/source/txng_bln_be/src/wallet",
   CONNECTION_ORG1_PATH:
-    "/root/blockchain/fabric-samples/first-network/connection-org1.json",
+    "/root/blockchain/txng-bln/source/txng_bln_be/src/confs/connection-org1.json",
 
   CHANNEL_NAME: "mychannel",
   CHAINCODE_NAME: "mycc1",
