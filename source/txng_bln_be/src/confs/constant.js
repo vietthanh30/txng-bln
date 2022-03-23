@@ -6,7 +6,7 @@ const Constant = {
     "/root/blockchain/txng-bln/Build-Multi-Host-Network-Hyperledger/connection-org1.json",
 
   CHANNEL_NAME: "mychannel",
-  CHAINCODE_NAME: "mycc1",
+  CHAINCODE_NAME: "txngbln_chaincode",
 
   HTTP_CODE: {
     SUCCESSFULLY: 200,

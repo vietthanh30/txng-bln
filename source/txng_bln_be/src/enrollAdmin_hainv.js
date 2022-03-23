@@ -36,7 +36,7 @@ async function main() {
   try {
     // Create a new CA client for interacting with the CA.
     const ca = new FabricCAServices(
-      "https://192.53.118.223:7054",
+      "http://192.53.118.223:7054",
       {
         trustedRoots:
           "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem",
@@ -51,17 +51,17 @@ async function main() {
     console.log(`Wallet path: ${walletPath}`);
 
     // Check to see if we've already enrolled the admin user.
-    const adminExists = await wallet.exists("admin_hainv");
+    const adminExists = await wallet.exists("admin");
     if (adminExists) {
       console.log(
-        'An identity for the admin user "admin_hainv" already exists in the wallet'
+        'An identity for the admin user "admin" already exists in the wallet'
       );
       return;
     }
 
     // Enroll the admin user, and import the new identity into the wallet.
     const enrollment = await ca.enroll({
-      enrollmentID: "admin_hainv",
+      enrollmentID: "admin",
       enrollmentSecret: "adminpw",
     });
     const identity = X509WalletMixin.createIdentity(
