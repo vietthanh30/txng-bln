@@ -25,29 +25,27 @@
     },
     "peers": {
         "peer0.org1.example.com": {
-            "url": "grpcs://192.53.118.223:8051",
+            "url": "grpcs://192.53.118.223:7051",
             "tlsCACerts": {
                 "path": "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.org1.example.com",
-                "hostnameOverride": "peer0.org1.example.com"
+                "ssl-target-name-override": "peer0.org1.example.com"
             }
         },
         "peer1.org1.example.com": {
-            "url": "grpcs://172.105.116.23:9051",
+            "url": "grpcs://172.105.116.237:7051",
             "tlsCACerts": {
                 "path": "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer1.org1.example.com",
-                "hostnameOverride": "peer1.org1.example.com"
+                "ssl-target-name-override": "peer1.org1.example.com"
             }
         }
     },
     "certificateAuthorities": {
         "ca.org1.example.com": {
-            "url": "https://localhost:7054",
+            "url": "http://192.53.118.223:7054",
             "caName": "ca.example.com",
             "tlsCACerts": {
                 "path": "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
