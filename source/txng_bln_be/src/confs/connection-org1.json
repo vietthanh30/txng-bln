@@ -25,23 +25,21 @@
     },
     "peers": {
         "peer0.org1.example.com": {
-            "url": "grpcs://192.53.118.223:8051",
+            "url": "grpc://192.53.118.223:7051",
             "tlsCACerts": {
                 "path": "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.org1.example.com",
-                "hostnameOverride": "peer0.org1.example.com"
+                "ssl-target-name-override": "192.53.118.223"
             }
         },
         "peer1.org1.example.com": {
-            "url": "grpcs://172.105.116.237:9051",
+            "url": "grpc://172.105.116.237:7051",
             "tlsCACerts": {
                 "path": "/root/blockchain/fabric-samples/Build-Multi-Host-Network-Hyperledger/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer1.org1.example.com",
-                "hostnameOverride": "peer1.org1.example.com"
+                "ssl-target-name-override": "172.105.116.237"
             }
         }
     },
