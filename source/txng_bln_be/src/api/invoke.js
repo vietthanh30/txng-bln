@@ -30,7 +30,7 @@ const addBlock = async (req, res) => {
     await gateway.connect(Constant.CONNECTION_ORG1_PATH, {
       wallet,
       identity: "admin",
-      discovery: { enabled: true, asLocalhost: true },
+      discovery: { enabled: true, asLocalhost: false },
     });
 
     // Get the network (channel) our contract is deployed to.
