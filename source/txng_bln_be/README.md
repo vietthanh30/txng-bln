@@ -68,6 +68,16 @@ Response:
 # node enrollAdmin.js
 ```
 
+## Run server with PM2
+* Install pm2
+```
+# npm install pm2 -g
+```
+* Run server
+```
+# pm2 start npm --name "txng_bln_be" -- start
+```
+
 # Refs
 * https://kctheservant.medium.com/an-implementation-of-api-server-for-hyperledger-fabric-network-8764c79f1a87
 * https://www.skcript.com/svr/setting-up-restful-api-server-for-hyperledger-fabric-with-nodejs-sdk/
