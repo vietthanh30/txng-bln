@@ -17,7 +17,7 @@ const TableData = props => {
     getAllBlock();
   }, []);
   const renderRightHeaderComponent = () => {
-    return <Button onClick={() => onClickCreateData()}>Add block</Button>;
+    return <Button onClick={() => onClickCreateData()}>Thêm mới</Button>;
   };
 
   async function getAllBlock() {
@@ -26,10 +26,11 @@ const TableData = props => {
     if (blocks.status !== 5000) {
       setTableData(JSON.parse(blocks.results));
     } else {
-      myNotification.current.addNotification({
-        message: `Can't get data list`,
-        level: 'error',
-      });
+      // myNotification.current.addNotification({
+      //   message: 'Lỗi trong quá trình lấy dữ liệu',
+      //   level: 'error',
+      // });
+      getAllBlock();
     }
   }
 
@@ -51,13 +52,13 @@ const TableData = props => {
         getAllBlock();
         closeModalCreate();
         myNotification.current.addNotification({
-          message: 'Successfully',
+          message: 'Thành công!',
           level: 'success',
         });
       })
       .catch(err => {
         myNotification.current.addNotification({
-          message: `Can't add block`,
+          message: 'Tạo dữ liệu thất bại !',
           level: 'error',
         });
       });
@@ -71,7 +72,7 @@ const TableData = props => {
         className={props.className}
         size="lg"
       >
-        <ModalHeader primary>Add block</ModalHeader>
+        <ModalHeader primary>Thêm mới dữ liệu</ModalHeader>
         <ModalBody>
           <Form
             onHandelSubmitData={payload => onSubmit(payload)}
