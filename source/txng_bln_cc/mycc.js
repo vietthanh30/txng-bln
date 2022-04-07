@@ -17,7 +17,29 @@ class TxngBlnContract extends Contract {
     console.info("queryBlockById blockAsBytes: ", blockAsBytes);
     console.info("queryBlockById response: ", block);
 
-    return block;
+    // get history edit block
+    let iteratorHistoryList = await ctx.stub.getHistoryForKey(blockId);
+    let historyList = [];
+    let res = await iteratorHistoryList.next();
+    while (!res.done) {
+      if (res.value) {
+        console.info(
+          `found state update with value: ${res.value.value.toString("utf8")}`
+        );
+        const obj = JSON.parse(res.value.value.toString("utf8"));
+        historyList.push(obj);
+      }
+      res = await iteratorHistoryList.next();
+    }
+    await iteratorHistoryList.close();
+
+    // history response
+    let blockData = {
+      block: block,
+      historyList: historyList
+    };
+
+    return JSON.stringify(blockData);
   }
 
   // add block data
