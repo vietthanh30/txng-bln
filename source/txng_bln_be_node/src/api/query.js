@@ -30,7 +30,7 @@ const getBlockById = async (req, res) => {
     await gateway.connect(Constant.CONNECTION_ORG1_PATH, {
       wallet,
       identity: "admin",
-      discovery: { enabled: true, asLocalhost: false },
+      discovery: { enabled: true, asLocalhost: true },
     });
 
     // Get the network (channel) our contract is deployed to.
@@ -100,7 +100,7 @@ const getAllBlock = async (req, res) => {
     await gateway.connect(Constant.CONNECTION_ORG1_PATH, {
       wallet,
       identity: "admin",
-      discovery: { enabled: true, asLocalhost: false },
+      discovery: { enabled: true, asLocalhost: true },
     });
 
     // Get the network (channel) our contract is deployed to.
